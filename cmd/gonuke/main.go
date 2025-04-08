@@ -4,7 +4,7 @@ import (
     "flag"
     "fmt"
     "os"
-    "github.com/YOURUSERNAME/gonuke/process"
+    "github.com/ljste/gonuke/process"
 )
 
 func main() {

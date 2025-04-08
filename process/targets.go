@@ -1,7 +1,6 @@
 package process
 
 import (
-    "os/user"
     "regexp"
     "runtime"
 
