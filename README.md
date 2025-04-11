@@ -6,9 +6,11 @@
 
 ## Features
 - Find running processes by **name pattern** (regex)
+- Filter processes owned by a specific user
+- Multiple signal support (TERM, KILL, HUP, INT)
 - Dry run mode: *see* what would be nuked before killing
 - Confirmations to avoid accidents (override with `--force`)
-- Mass kill matched processes with SIGKILL (`-9`) on Unix
+- Cross-platform support (Unix/Windows)
 - Designed for dev, CI cleanup, or stubborn zombie removal
 
 ---
@@ -21,6 +23,12 @@ gonuke --pattern foo --dry-run
 
 # Force kill all 'myapp' processes, no confirmation
 gonuke --pattern myapp --force
+
+# Gracefully terminate matching processes with SIGTERM
+gonuke --pattern myapp --signal TERM
+
+# Kill processes owned by specific user
+gonuke --user someuser --pattern myapp
 
 # See CLI flags
 gonuke --help
@@ -40,18 +48,6 @@ go build -o gonuke ./cmd/gonuke
 
 ## TODO / planned
 
-- Filter processes owned by a specific user
 - Recursive killing of children and process trees
 - Timeout & graceful SIGTERM before nuke
-- Windows support
-
----
-
-## License
-
-MIT
-
----
-
-# **Use with care!**  
-gonuke kills what you tell it — don't run as root unless you mean it.
+- Better Windows user filtering support
